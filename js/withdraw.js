@@ -3,6 +3,9 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
     const withdrawInputValue = withdrawInput.value;
     const withdrawInputValueNumber = parseFloat(withdrawInputValue)
     withdrawInput.value =''
+    if (isNaN(withdrawInputValueNumber)) {
+        return alert ('Not a Number')
+    }
 
     //
     const withdrawCurrent = document.getElementById('withdraw-current');
@@ -16,7 +19,10 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
 
     //
     const withdrawAmount = withdrawInputValueNumber + withdrawCurrentValueNumber;
+    if (withdrawAmount > currentBalanceValueNumber) {
+        return alert ('Insufficient Balance')
+    }
     withdrawCurrent.innerText = withdrawAmount;
-    currentBalance.innerText = currentBalanceValueNumber -withdrawAmount;
 
+    currentBalance.innerText = currentBalanceValueNumber -withdrawAmount;
 })
